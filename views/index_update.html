@@ -1,0 +1,29 @@
+<html>
+    <head>
+    </head>
+    <body>
+    <ul>
+        <% users.forEach(function(user) { %>
+            <li>
+                <form method='post' action='/users/<%= user.id %>/?_method=PUT'>
+                <button><%= user.first %> <%= user.last %></button>
+                </form>
+        
+                <form method='post' action='/users/<%= user.id %>/?_method=delete'>
+                <button>Delete</button>
+                </form>  
+            </li>
+        <% }) %>         
+    </ul>
+    <form method='post' action='/users'>
+    <input type='text' name='firstname' value= <%= userToUpdate.first %>>
+    <input type='text' name='lastname' value= <%= userToUpdate.last %>>
+    <input type='hidden' name='id' value= <%= userToUpdate.id} %>>
+    <button>Update</button>
+    </form>
+            
+    <form action='/users'>
+    <input type='submit' value='Cancel'>
+    </form> 
+    </body>
+</html>
